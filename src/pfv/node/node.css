@@ -1,0 +1,51 @@
+.node{
+    /* background-color: rgb(13, 41, 99); */
+    background-color: rgb(155, 189, 223);
+    outline: 1px solid black;
+    color: white;
+}
+.startnode{
+    background-color: rgb(56, 179, 56);
+}
+.endnode{
+    background-color: rgb(247, 73, 73);
+}
+.visited{
+    background-color: rgb(13, 41, 99);
+}
+.path{
+    background-color: rgb(240, 240, 186);
+}
+.node:hover{
+    transition-delay: 0.5s;
+    background: rgb(153, 174, 233);
+}
+.wall{
+    background-color: black;
+}   
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  }
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgb(253, 253, 253);
+    color: rgb(15, 15, 15);
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+   
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    transition-delay: 0.5s;
+  }
