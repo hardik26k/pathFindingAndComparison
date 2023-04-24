@@ -1,4 +1,12 @@
-import { _node, isNeighbor} from "./helpers";
+// import { _node, isNeighbor} from "./helpers";
+
+export function _node(row , col , cols){
+    return row*cols + col; 
+}
+export function isNeighbor(row , col , rows , cols){
+    return (row>=0 && row<rows) && (col>=0 && col<cols);
+}
+
 
 export function DFS(rows ,cols ,startnode ,endnode ,grid){
     const INF = 1e6 , size_of_grid = grid.length , wall_weight = 1e6;
@@ -7,11 +15,18 @@ export function DFS(rows ,cols ,startnode ,endnode ,grid){
     // calculate all paths
     var visited = new Array(size_of_grid).fill(false);
     var Order = [];
+    let unVisitedNode = [];
+    
+    if( !startnode || !endnode || startnode === finishnode){
+        return;
+    }
+
+    unVisitedNode.push(startnode);
 
     function dfs(node){
         Order.push(node);
 
-        if(node == endnode){
+        if(node === endnode){
             return [Order,[]];
         }
 
@@ -27,6 +42,7 @@ export function DFS(rows ,cols ,startnode ,endnode ,grid){
         }
         Order.push(node);
     }   
+
     dfs(startnode);
     return [Order,[]];
 }

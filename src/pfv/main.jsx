@@ -91,18 +91,29 @@ const App = (()=>{
 
     async function resetPathVisited(Arr,i,key1){
         if (i===Arr.length) return true;
+        let tempArr = [];
         let myPromise = new Promise((resolve,reject) =>{
             let new_grid = grid.slice();
-            setGrid(GenerateGrid(rows,cols));
+            console.log("Sliced Grid");
+            console.log(new_grid);
+            for( let node in new_grid){
+               tempArr.push(node);
+            }
+            // console.log("New Grid");
+            // console.log(new_grid);
+            //setGrid(new_grid);
             resolve(true);
         });
+        console.log("Temp Arr");
+        console.log(tempArr);
         if ( await myPromise ) {
             return resetPathVisited(Arr,i+1);
         }
     };
     async function resetWithWalls(){
         let myPromise = new Promise((resolve,reject) => {
-            resetPathVisited(runLog[runLog.length - 1].visitOrder,0,"isVisited")
+            // resetPathVisited(runLog[runLog.length - 1].visitOrder,0,"isVisited")
+            resetPathVisited(grid,"isVisited");
             resolve(true);
         })
         if( await myPromise ){
