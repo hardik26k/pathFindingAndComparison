@@ -1,7 +1,8 @@
 ## Path Finding Visualiser using ReactJS
 
 ### Download the project using git clone or download the zip archive
-![image](https://user-images.githubusercontent.com/57061799/236792862-dc63b278-2f6a-410e-a917-6100cdabdd4d.png)
+![image](https://user-images.githubusercontent.com/57061799/236795967-9795a0a4-9080-4a5d-b0eb-675e160be787.png)
+
 
 If you have downloaded the zip archive then unzip it
 
