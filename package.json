@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage":"http://hardik26k.github.io/pathFindingAndComparison",
+  "homepage":"https://hardik26k.github.io/pathFindingAndComparison/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
