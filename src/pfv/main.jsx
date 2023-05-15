@@ -27,8 +27,8 @@ const App = (()=>{
     const [isAnimation , setIsAnimation] = useState(false);
 
     // Algo status state variables
-    const [djisktraLength,setDjisktraLength] = useState('');
-    const [djisktraRunTime,setDjisktraRunTime] = useState(0);
+    const [DijkstraLength,setDijkstraLength] = useState('');
+    const [DijkstraRunTime,setDijkstraRunTime] = useState(0);
     const [dfsLength,setDFSLength] = useState('');
     const [dfsRunTime,setDFSRunTime] = useState(0);
     const [AstarLength,setAstarLength] = useState('');
@@ -107,7 +107,7 @@ const App = (()=>{
         console.log("Temp Arr");
         console.log(tempArr);
         if ( await myPromise ) {
-            return resetPathVisited(Arr,i+1);
+            return resetPathVisited(Arr,q+1);
         }
     };
     async function resetWithWalls(){
@@ -138,8 +138,8 @@ const App = (()=>{
             case 'Dijkstra':
                 setOpen(true);
                 setRunningInfo(key);
-                setDjisktraLength(len);
-                setDjisktraRunTime(finalTime);
+                setDijkstraLength(len);
+                setDijkstraRunTime(finalTime);
                 break;
             case 'BFS':
                 setOpen(true);
@@ -310,9 +310,9 @@ const App = (()=>{
                     <p>Time : {astarRunTime}ms</p>
                 </div>
                 <div className="statItem">
-                    <h3 id="Dijkstra" style={{textDecoration:'underline'}}>Djisktra</h3>
-                    <p>Length : {djisktraLength}</p>
-                    <p>Time : {djisktraRunTime}ms</p>
+                    <h3 id="Dijkstra" style={{textDecoration:'underline'}}>Dijkstra</h3>
+                    <p>Length : {DijkstraLength}</p>
+                    <p>Time : {DijkstraRunTime}ms</p>
                 </div>
                 <div className="statItem">
                     <h3 id="DFS" style={{textDecoration:'underline'}} >DFS</h3>
