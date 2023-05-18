@@ -17,7 +17,7 @@ export const isWeighted = {
     Djikstra: true,
     BFS: false,
     DFS: false,
-    Astar: "false"
+    Astar: false
 };
 
 

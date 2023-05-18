@@ -1,4 +1,4 @@
-import {row , col , _node, isNeighbor, Path} from "./helpers";
+import {row , col , _node, isNeighbor} from "./helpers";
 
 export function Astar(rows ,cols ,startnode ,endnode ,grid){
     const INF = 1e6,size_of_grid = grid.length ,wall_weight = 1e6;
@@ -16,37 +16,41 @@ export function Astar(rows ,cols ,startnode ,endnode ,grid){
     var queue = [startnode, endnode];
     var Order = [];
 
+    function PathforAstar(source, sink){
+        var y = source;
+        var shortestpath = [];
+        while(y !== sink){
+            shortestpath.push(y);
+            y = par[y];
+        }
+        shortestpath.reverse();
+        return shortestpath;
+    }
+
     while(queue.length){
         let u = queue.shift();
-        // if(visited[u] > 0) continue;
         let R = row(u , cols) , C = col(u , cols);
+        if(visited[u] === true) {
+            continue;
+        }
         visited[u] = true;
         Order.push(u);
 
-        function PathforAstar(source, sink){
-            var y = source;
-            var shortestpath = [];
-            while(y !== sink){
-                shortestpath.push(y);
-                y = par[y];
-            }
-            shortestpath.reverse();
-            return shortestpath;
-        }
+        
 
         for(var i in iterate){
             let r = R + iterate[i][0] , c = C + iterate[i][1];
             if(!isNeighbor(r, c ,rows ,cols)) continue;
             let next = _node(r,c,cols);
-            if(grid[next].Weight === wall_weight) continue;
+            if(grid[next].Weight === wall_weight || visited[next] === true) continue;
             if(x[next] + x[u] === 3){
                 return [Order,  
-                    (visited[u] === 1) 
+                    (x[u] === 1) 
                     ? PathforAstar(u, startnode).reverse().concat(PathforAstar(next, endnode)) 
                     : PathforAstar(next, startnode).reverse().concat(PathforAstar(u, endnode))];
             }
 
-            visited[next] = visited[u];
+            x[next] = x[u];
 
             if(distance[u] + Number(grid[next].Weight) < distance[next]){
                 distance[next] = distance[u] + Number(grid[next].Weight);

@@ -16,13 +16,9 @@ export function Dijkstra(rows ,cols ,startnode ,endnode ,grid){
     while(queue.length){
         queue.sort((a , b) => distance[a] - distance[b]);
         let u = queue.shift();
-        if(visited[u]) continue;
         let R = row(u , cols) , C = col(u , cols);
         visited[u] = true;
         Order.push(u);
-        if(u == endnode){
-            return [Order, Path(par, endnode)];
-        }
 
         for(var i in iterate){
             let r = R + iterate[i][0] , c = C + iterate[i][1];
@@ -36,5 +32,6 @@ export function Dijkstra(rows ,cols ,startnode ,endnode ,grid){
             }
         }
     }
-    return[Order,[]];
+
+    return[Order,(visited[endnode] === true ? Path(par, endnode) : [])];
 }

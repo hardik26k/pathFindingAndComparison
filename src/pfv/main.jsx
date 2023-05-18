@@ -76,7 +76,7 @@ const App = (()=>{
         if (await myPromise) {
             return Animate(Arr, i + 1, key);
         }
-    };
+    }
 
     async function AnimateVisitedOrder(Order, shortestpath) {
         setIsAnimation(true);
@@ -87,12 +87,12 @@ const App = (()=>{
             Animate(shortestpath, 0, "isPath");
         }
         setIsAnimation(false);
-    };
+    }
 
     async function resetPathVisited(Arr,i,key1){
         if (i===Arr.length) return true;
         let tempArr = [];
-        let myPromise = new Promise((resolve,reject) =>{
+        let myPromise = new Promise((resolve, reject) =>{
             let new_grid = grid.slice();
             console.log("Sliced Grid");
             console.log(new_grid);
@@ -107,11 +107,11 @@ const App = (()=>{
         console.log("Temp Arr");
         console.log(tempArr);
         if ( await myPromise ) {
-            return resetPathVisited(Arr,q+1);
+            return resetPathVisited(Arr,i+1);
         }
-    };
+    }
     async function resetWithWalls(){
-        let myPromise = new Promise((resolve,reject) => {
+        let myPromise = new Promise((resolve, reject) => {
             // resetPathVisited(runLog[runLog.length - 1].visitOrder,0,"isVisited")
             resetPathVisited(grid,"isVisited");
             resolve(true);
@@ -284,6 +284,7 @@ const App = (()=>{
             <div style={{ width: (cols) * 42 }} className="grid">
                 {grid.map(e => (
                     <div
+                        key = {e}
                         onDoubleClick={() => handlechange(e.idx)}
                         onMouseDown={() => setPressed(true)}
                         onMouseUp={() => setPressed(false)}
